@@ -1,0 +1,263 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{Guo.2021}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=571b5c86f9e650878591387fc32b2c35}{%
+           family={Guo},
+           familyi={G\bibinitperiod},
+           given={Guanlong},
+           giveni={G\bibinitperiod}}}%
+        {{hash=849d9145c63d4c879cdae814dbd11017}{%
+           family={Fall},
+           familyi={F\bibinitperiod},
+           given={Mamadou},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{96ceac983340974c0c1d49ea21d1f13b}
+      \strng{fullhash}{96ceac983340974c0c1d49ea21d1f13b}
+      \strng{fullhashraw}{96ceac983340974c0c1d49ea21d1f13b}
+      \strng{bibnamehash}{96ceac983340974c0c1d49ea21d1f13b}
+      \strng{authorbibnamehash}{96ceac983340974c0c1d49ea21d1f13b}
+      \strng{authornamehash}{96ceac983340974c0c1d49ea21d1f13b}
+      \strng{authorfullhash}{96ceac983340974c0c1d49ea21d1f13b}
+      \strng{authorfullhashraw}{96ceac983340974c0c1d49ea21d1f13b}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Engineering Geology, 287 (2021) 106123. doi:10.1016/j.enggeo.2021.106123}
+      \field{issn}{00137952}
+      \field{journaltitle}{Engineering Geology}
+      \field{title}{Advances in modelling of hydro-mechanical processes in gas migration within saturated bentonite: A state-of-art review}
+      \field{volume}{287}
+      \field{year}{2021}
+      \field{pages}{106123}
+      \range{pages}{1}
+      \verb{doi}
+      \verb \url{10.1016/j.enggeo.2021.106123}
+      \endverb
+      \verb{file}
+      \verb 1-s2.0-S0013795221001344-main:Attachments/1-s2.0-S0013795221001344-main.pdf:application/pdf
+      \endverb
+      \keyw{Bentonite;Coupled hydromechanical processes;Deep geological repository;Dilatancy-controlled flow;Gas migration;Nuclear wastes}
+    \endentry
+    \entry{Janssen.2002}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=5f2ed32f974edf2414ef3e60b7bad448}{%
+           family={Janssen},
+           familyi={J\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a6da7a886185ddc526c7e98f746a96e1}{%
+           family={Zuidema},
+           familyi={Z\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=fad76dc8c472a92911da5134de231680}{%
+           family={Wanhill},
+           familyi={W\bibinitperiod},
+           given={R.J.H},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{2ae012d366b5552152d6f7c2fc87181e}
+      \strng{fullhash}{2ae012d366b5552152d6f7c2fc87181e}
+      \strng{fullhashraw}{2ae012d366b5552152d6f7c2fc87181e}
+      \strng{bibnamehash}{2ae012d366b5552152d6f7c2fc87181e}
+      \strng{authorbibnamehash}{2ae012d366b5552152d6f7c2fc87181e}
+      \strng{authornamehash}{2ae012d366b5552152d6f7c2fc87181e}
+      \strng{authorfullhash}{2ae012d366b5552152d6f7c2fc87181e}
+      \strng{authorfullhashraw}{2ae012d366b5552152d6f7c2fc87181e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Fracture Mechanics}
+      \field{year}{2002}
+      \verb{file}
+      \verb FractureMechanics:Attachments/FractureMechanics.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{Chang.2002}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=629504047cf671aecca667f9c4bd683c}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Soo-Ho},
+           giveni={S\bibinithyphendelim H\bibinitperiod}}}%
+        {{hash=a9657d6691eabc08a38659e72da3f6e1}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Chung-In},
+           giveni={C\bibinithyphendelim I\bibinitperiod}}}%
+        {{hash=c62189f7e099f8e30c8adcb28a950625}{%
+           family={Jeon},
+           familyi={J\bibinitperiod},
+           given={Seokwon},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{da366b703bf0cf4beee775450521f98d}
+      \strng{fullhash}{da366b703bf0cf4beee775450521f98d}
+      \strng{fullhashraw}{da366b703bf0cf4beee775450521f98d}
+      \strng{bibnamehash}{da366b703bf0cf4beee775450521f98d}
+      \strng{authorbibnamehash}{da366b703bf0cf4beee775450521f98d}
+      \strng{authornamehash}{da366b703bf0cf4beee775450521f98d}
+      \strng{authorfullhash}{da366b703bf0cf4beee775450521f98d}
+      \strng{authorfullhashraw}{da366b703bf0cf4beee775450521f98d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Measurement of rock fracture toughness under modes I and II and mixed-mode conditions by using disc-type specimens}
+      \field{volume}{66}
+      \field{year}{2002}
+      \field{pages}{79\bibrangedash 97}
+      \range{pages}{19}
+      \verb{file}
+      \verb 1-s2.0-S0013795202000339-main:Attachments/1-s2.0-S0013795202000339-main.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{Hartmaier.}{unpublished}{}{}
+      \name{author}{1}{}{%
+        {{hash=99c7fb89af7f5fb02bcdac551bcf77dc}{%
+           family={Hartmaier},
+           familyi={H\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{99c7fb89af7f5fb02bcdac551bcf77dc}
+      \strng{fullhash}{99c7fb89af7f5fb02bcdac551bcf77dc}
+      \strng{fullhashraw}{99c7fb89af7f5fb02bcdac551bcf77dc}
+      \strng{bibnamehash}{99c7fb89af7f5fb02bcdac551bcf77dc}
+      \strng{authorbibnamehash}{99c7fb89af7f5fb02bcdac551bcf77dc}
+      \strng{authornamehash}{99c7fb89af7f5fb02bcdac551bcf77dc}
+      \strng{authorfullhash}{99c7fb89af7f5fb02bcdac551bcf77dc}
+      \strng{authorfullhashraw}{99c7fb89af7f5fb02bcdac551bcf77dc}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{CompFracMec-Part{\_}III.pdf}
+      \field{year}{2026}
+      \verb{file}
+      \verb CompFracMec-Part{\_}III:Attachments/CompFracMec-Part{\_}III.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{Khoramishad.2010}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=71c662077236cfe71bdeddd54492f233}{%
+           family={Khoramishad},
+           familyi={K\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=2b7ad6ccdbb8db8396354311c8a4a4ea}{%
+           family={Crocombe},
+           familyi={C\bibinitperiod},
+           given={A.\bibnamedelimi D.},
+           giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=e370f8ead8b4510af88db592e005a7f2}{%
+           family={Katnam},
+           familyi={K\bibinitperiod},
+           given={K.\bibnamedelimi B.},
+           giveni={K\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=404b571fd6e4006844e266c83f3ef9c9}{%
+           family={Ashcroft},
+           familyi={A\bibinitperiod},
+           given={I.\bibnamedelimi A.},
+           giveni={I\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e182016698ab0a5af70437df99a9b73c}
+      \strng{fullhash}{9c865dea194ac8b7d95b7f4b6fe6d7dc}
+      \strng{fullhashraw}{9c865dea194ac8b7d95b7f4b6fe6d7dc}
+      \strng{bibnamehash}{e182016698ab0a5af70437df99a9b73c}
+      \strng{authorbibnamehash}{e182016698ab0a5af70437df99a9b73c}
+      \strng{authornamehash}{e182016698ab0a5af70437df99a9b73c}
+      \strng{authorfullhash}{9c865dea194ac8b7d95b7f4b6fe6d7dc}
+      \strng{authorfullhashraw}{9c865dea194ac8b7d95b7f4b6fe6d7dc}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{01421123}
+      \field{journaltitle}{International Journal of Fatigue}
+      \field{number}{7}
+      \field{title}{Predicting fatigue damage in adhesively bonded joints using a cohesive zone model}
+      \field{volume}{32}
+      \field{year}{2010}
+      \field{pages}{1146\bibrangedash 1158}
+      \range{pages}{13}
+      \verb{doi}
+      \verb \url{10.1016/j.ijfatigue.2009.12.013}
+      \endverb
+      \verb{file}
+      \verb CohesiveZoneModel:Attachments/CohesiveZoneModel.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{Belytschko.2009}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=7baf40772d707fab6fd1da4c79156dd4}{%
+           family={Belytschko},
+           familyi={B\bibinitperiod},
+           given={Ted},
+           giveni={T\bibinitperiod}}}%
+        {{hash=53874267283744c031f7bdf6092a8075}{%
+           family={Gracie},
+           familyi={G\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=f716bba633be6aeb29f62d6d9802f846}{%
+           family={Ventura},
+           familyi={V\bibinitperiod},
+           given={Giulio},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{655c873f777bbd4d1d33941ae298acb3}
+      \strng{fullhash}{655c873f777bbd4d1d33941ae298acb3}
+      \strng{fullhashraw}{655c873f777bbd4d1d33941ae298acb3}
+      \strng{bibnamehash}{655c873f777bbd4d1d33941ae298acb3}
+      \strng{authorbibnamehash}{655c873f777bbd4d1d33941ae298acb3}
+      \strng{authornamehash}{655c873f777bbd4d1d33941ae298acb3}
+      \strng{authorfullhash}{655c873f777bbd4d1d33941ae298acb3}
+      \strng{authorfullhashraw}{655c873f777bbd4d1d33941ae298acb3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Engineering Sciences [physics]/Mechanics [physics.med-ph]/Structural mechanics [physics.class-ph]}
+      \field{issn}{0965-0393}
+      \field{journaltitle}{Modelling and Simulation in Materials Science and Engineering}
+      \field{number}{4}
+      \field{title}{A review of extended/generalized finite element methods for material modeling}
+      \field{volume}{17}
+      \field{year}{2009}
+      \field{pages}{043001}
+      \range{pages}{1}
+      \verb{doi}
+      \verb \url{10.1088/0965-0393/17/4/043001}
+      \endverb
+      \verb{file}
+      \verb Belytschko2009:Attachments/Belytschko2009.pdf:application/pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

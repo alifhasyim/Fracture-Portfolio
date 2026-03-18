@@ -1,0 +1,379 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{float}
+\usepackage{longtable}
+\usepackage{setspace} 
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{float} % Required for the [H] figure placement
+\pgfplotsset{compat=1.18} % Set this to your installed version or 1.18
+
+\captionsetup[figure]{
+    format=hang,          % This creates the "tabbed" / hanging alignment
+    indention=0cm,        % Ensures no extra indentation
+    labelsep=quad,        % Adds a wide space (like a tab) after "Figure 1:"
+    labelfont=bf,         % Makes the label bold (optional, but professional)
+    skip=15pt             % Adds vertical space BETWEEN the caption and the paragraph below
+}
+\usepackage[most]{tcolorbox}
+\usepackage[style=numeric, sorting=none, backend=biber]{biblatex} 
+\addbibresource{bibliography_CIBB_file.bib}
+
+% --- ESSENTIAL ALIGNMENT FIXES ---
+\setlength{\parindent}{0pt}   % Makes text flush with the titles
+\setlength{\parskip}{1em}     % Adds a clean space between paragraphs
+% ---------------------------------
+
+\newtcbtheorem{Summary}{\bfseries Summary}{enhanced,drop shadow={black!50!white},
+  coltitle=black,
+  top=0.3in,
+  attach boxed title to top left=
+  {xshift=1.5em,yshift=-\tcboxedtitleheight/2},
+  boxed title style={size=small,colback=pink}
+}{summary}
+
+\title{Self-Evaluation Report \\ \large Computational Fracture Mechanics (WiSe26)}
+\author{Bagus Alifah Hasyim \\ 108023246468}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Phenomenology of Fracture}
+
+\section{Linear Elastic Fracture Mechanics (LEFM)}
+
+\hspace{1em} As referring to the lecture, linear elastic fracture mechanics is a scope of fracture studies by means the crack consideration as a static crack, 
+which implies no further investigation of crack propagation. The naming is also quite clear that LEFM mainly concern only on the elastic strain energy to the
+fracture propagation, which is derived from the Griffith Fracture Criterion (GFC). The criterion states that fracture propagation is started as the decrease 
+of the elastic strain energy of the material is equal to the increase in the surface energy of the fracture~\cite{Guo.2021}. To understand the relation of the
+surface energy and the elastic strain energy, further illustration is shown in figure~\ref{fig:Energy}.
+
+\hspace{1em} Consider an infinite plate with crack length of 2a that is subjected to a stress $\sigma$. 
+The change of elastic energy is defined as follows:
+
+\begin{equation}
+  W_{el} = -\frac{\pi \sigma^2 a^2}{E}
+  \label{eq:ElasticEnergy}
+\end{equation}
+
+Where $a$ is the crack length and $E$ is the young modulus. Notice that the minus sign is stated due to the fact that these phenomena is a decrease of elastic energy.
+While the surface energy is described as following relation:
+
+\begin{equation}
+  W_{s} = 4a \gamma_s 
+  \label{eq:ElasticEnergy}
+\end{equation}
+
+Where $\gamma_s$ is the surface energy of the crack, which increase as the crack length increase as well. Hence, Griffith postulation mentioned that 
+a crack will extend if the potential energy decrease~\cite{Janssen.2002}. Potential energy is defined as the sum of the surface energy and the elastic energy, which is written as follows:
+
+\begin{equation}
+  U = W_s + W_{el}
+  \label{eq:TotalEnergy}
+\end{equation}
+
+Therefore, the postulation can be written mathematically as follows:
+
+\begin{equation}
+  F_{crack} = -\frac{dU}{da} > 0
+  \label{eq:Crack}
+\end{equation}
+
+From this relation, this can be explained that the negative quadratic term for the elastic energy decrease eventually the
+contribution of the surface crack energy, which at some point the total energy curve is decreased. This turning point is considered
+as the crack initiation criterion, which the slope begin to change to negative sign. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Q1_Energy.pdf}
+    \caption{Energy balance for small crack in a large plate loaded with fixed grip conditions~\cite{Janssen.2002}.}
+    \label{fig:Energy}
+\end{figure}
+
+\hspace{1em} The energy/griffith method is considered impractical to apply in studying crack. Going by this Background, Irwin developed so call stress intensity approach in the 1950s. This
+method basically utilized an additional dimensionless parameter K, which used to determine the stresses in the vicinity of the crack. The nomenclature in figure~\ref{fig:Stress} shows the calculated
+stress determined from the tip of the crack which defined as follows:
+
+\begin{equation}
+  \sigma_{ij} = \frac{K_{I}}{\sqrt{2\pi r }} f_{ij}^{(I)}(\theta) + \frac{K_{II}}{\sqrt{2\pi r }} f_{ij}^{(II)}(\theta) + \frac{K_{III}}{\sqrt{2\pi r }} f_{ij}^{(III)}(\theta)
+  \label{eq:Stress}
+\end{equation}
+
+\hspace{1em} Where $K$ is the stress intensity factor and $f_{ij}$ is a geometry factor, ranging a different equation or value for every different loading mode, crack dimension, crack position, and specimen dimension. The $ij$ subscript 
+is defined for different stress state, for example $\sigma_{22}$ is used to describe the stress in the y-coordinates (for Cartesian coordinate usage). It can be inferred 
+from equation~\ref{eq:Stress} that the stress will produce singularity at crack tip, knowing the $\frac{1}{\sqrt{r}}$ relation which can produces high stress concentration value. Noted that $f_{ij}$ and $K$ is dependent
+on some certain of three modes or also known as how does the loading movement act on the crack. Therefore, equation~\ref{eq:Stress} is dependent on how does the loading act on the specimen with crack itself.
+Single loading type, for example a simple tensile load in the crack specimen will leave only the $\frac{K_{I}}{\sqrt{2\pi r }} f_{ij}^{(I)}(\theta)$ term in the stress equation. Figure~\ref{fig:Mode} shows the typical mode that exist for such
+specimen with crack.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Q1_StressCalc.pdf}
+    \caption{Stresses at point tip with respect to the crack tip using polar coordinate~\cite{Janssen.2002}.}
+    \label{fig:Stress}
+\end{figure}
+
+\hspace{1em}As mentioned in the beginning of this subchapter, LEFM have limitation only usage in a static crack and for brittle material. This is also due to the fact that
+brittle material does not undergo extensive plastic deformation compared to the ductile material. Hence, the flow curve until failure can be evaluated
+using LEFM approach.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{images/Q1_Mode.pdf}
+    \caption{Different type of loading mode (Mode I: Opening, Mode II: In-Plane Shear, Mode III: Out-of-Plane Shear)~\cite{Chang.2002}}
+    \label{fig:Mode}
+\end{figure}
+
+
+\section{Elastic-Plastic Fracture Mechanics}
+
+\hspace{1em} As discussed previously, linear elastic fracture mechanics have limitation on describing the fracture in the elastic region only.
+
+\section{Failure hypotheses}
+\section{Crack resistance and R-curve behavior}
+
+
+
+\newpage
+\section*{Finite Element Modeling of Dynamic Cracks and Damage}
+\section{Cohesive Zone Models}
+\hspace{1em} In finite element method concept, there are two main restrictions that should be taken account in introducing crack. The first one is the restriction of displacement jump
+as in FEM the connected element should have at least follows $C^0$ continuity. The second restriction is that stress should fulfill mesh dependency, meaning that the generated stress is influence
+ by the difference of mesh sizes and shape type~\cite{Hartmaier.}. To address the first restriction, cohesive zone method is introduced.
+
+\hspace{1em} Cohesive zone method (CZM) is a notably known method use to introduce crack in finite element analysis, which additional element so call cohesive material or glue is defined in between
+two elements. This implied to the state that the crack can only grow through the defined cohesive element, restricting random crack propagation direction. In this model, additional constitutive relation so call traction-separation law is introduced 
+as the cohesive element material.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/Q5_CohesiveElement.pdf}
+    \caption{Cohesive zone method mechanism with the zoomed in point of view on the traction criterion~\cite{Hartmaier.}}
+    \label{fig:Cohesive}
+\end{figure}
+
+\hspace{1em} To understand the CZM, figure~\ref{fig:Cohesive} shows the mechanism of the separation for side crack in a finite plate specimen with tensile load on both direction. As the displacement increase over time,
+stress concentration is accumulated in the crack tip. The stress will eventually exceed the criterion, which here is the defined stress threshold for the cohesive element. The element will separate as this criterion is fulfilled,
+moving the crack tip further to the deeper cohesive element, which then it will continue to propagate until the end of the defined cohesive element. As shown in figure~\ref{fig:Stress}, the crack is highly dependent on the mesh
+size and shape, which is correlated to the defined cohesive element. 
+
+\hspace{1em} The constitutive equation of CZM, which mentioned previously, use the traction-separation law. 
+Here, the law is defined through traction-displacement curve in figure~\ref{fig:TractionSeparation}. The curve show relation of stress or traction, denote as T and separation marked as
+$\delta$. The stiffness $E_0$ is defined so that the critical displacement $\delta_C$ is defined, with the traction threshold T as well. If the displacement and traction reach the maximum
+peak, the cohesive element starts to undergo strain-softening, decrease in stiffness and eventually leads to complete separation in a prescribed
+displacement of $\delta_f$. The area below curve, denote as $G_c$ is known as fracture energy, which the area is equivalent to the triangle area for this case. This implies the minimum energy in which fracture or
+separation is initiated, in other words.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/Q5_TractionSeparation.pdf}
+    \caption{Traction-separation curve visualized in the two plates separation~\cite{Khoramishad.2010}.}
+    \label{fig:TractionSeparation}
+\end{figure}
+
+\section{Extended Finite Element Method (XFEM)}
+\hspace{1em}On previous chapter, the restrictions in FEM are discussed, especially the strictness of minimum $C^0$ continuity to fulfill conformity of the mesh. Introducing
+extended finite element method (XFEM), where this approach couples the conventional conform displacement and allowing displacement jump, representing the crack propagation.
+The element is enriched with additional boundary $\varGamma_{crack}$, separating the body into $\Omega^+$ and $\Omega^-$~\cite{Hartmaier.}. Hence, the strain can be defined using two terms as following.
+
+\begin{equation}
+  \varepsilon(x,t) = \nabla u_{conv} (x,t) + H(x) \nabla u_X (x,t)  
+  \label{eq:Strain}
+\end{equation}
+
+\hspace{1em}Where $H(x)$ is a jump function, distinguishing the $\Omega^+$ and $\Omega^-$~\cite{Hartmaier.}. Hence, XFEM is basically an enriched element which have additional stiffness for the crack or the displacement jump. As a visualization, mathematically the
+linear equation for XFEM that solve for such conventional and crack (jump) displacement is written as follows:
+
+\begin{equation}
+\begin{vmatrix}
+\mathbf{K}_{\text{conv}} & \mathbf{K}_{\text{conv},X} \\
+\mathbf{K}_{\text{conv},X}^T & \mathbf{K}_{X,X}
+\end{vmatrix}
+\begin{vmatrix}
+\mathbf{u}_{\text{conv}} \\
+\mathbf{u}_{X}
+\end{vmatrix}
+=
+\begin{vmatrix}
+\mathbf{f}_{\text{ext,conv}} \\
+\mathbf{f}_{\text{ext},X}
+\end{vmatrix}
+-
+\begin{vmatrix}
+\mathbf{f}_{\text{int,conv}} \\
+\mathbf{f}_{\text{int},X}
+\end{vmatrix}
+\label{eq:XFEMLinear}
+\end{equation}
+
+\hspace{1em}Where $u_{conv}$ and $u_X$ is the linear equation that need to be solved for the conventional and crack displacement respectively. To understand the mechanism
+of the crack propagation in the enriched element, Belytschko et. al. represent the visualization on the crack growth on the enriched element according to figure~\ref{fig:XFEM}. Hence, the crack flows only in the designated enriched
+element. Hence, applying on certain area will give a better computational efficiency since it is quite prominent that running an extra degree of freedom can consequently
+increase the computational resources. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{images/Q6_XFEM.pdf}
+    \caption{An arbitrary crack line (dashed line) in a structured mesh with step enriched (light gray) and tip enriched (purple) elements. Nodes in sets $\mathcal{S}_C $ and $\mathcal{S}_H$ are denoted by red squares and blue circles, respectively~\cite{Belytschko.2009}.}
+    \label{fig:XFEM}
+\end{figure}
+
+\hspace{1em}Although XFEM come with an advantage of simulating a random crack propagation and giving it more freedom for the crack to propagate, this come to the disadvantage and also one of the challenging task
+in implementing this model. The challenge lies as the crack propagates to the node, this will give an unstable result, since the distance from the node to crack tip is nearly zero according to the relation of crack tip
+relation that proportional to $\sqrt{\frac{1}{r}}$, leading to very large stress contribution. Therefore, the model stability is a highly dependent on the mesh, as decreasing the mesh size is prone for the crack pass through the node.
+
+\section{Damage mechanics}
+\hspace{1em}The last approach for modelling fracture and considered one of the reliable model and have wide range usage especially in explicit dynamic application is
+damage mechanism. To understand the basic term of damage, let us consider a cylindrical specimen, which posses holes inside the volume. In figure~\ref{fig:DamageSpecimen}, $A_{eff}$ denote as the effective area. Where it stands
+for the area that is still capable of holding a stress, which the area is smaller than the area $A_0$ before it was damaged. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/Q7_DamageSpecimen.pdf}
+    \caption{Damaged cylindrical specimen shows in red coalescence of void with the applied force.}
+    \label{fig:DamageSpecimen}
+\end{figure}
+
+\hspace{1em}The relation of the effective and initial area can be written as follows.
+
+\begin{equation}
+  A_{eff} = (1-D)A_0
+  \label{eq:AreaDamage}
+\end{equation}
+
+\hspace{1em}Where D is damage parameter, ranging in between [0, 1]. Therefore, the final effective stress applied in the specimen with damage can be summarized as follows.
+
+\begin{equation}
+  \tilde{\sigma} = \frac{F}{A_{eff}} = \frac{F}{(1-D)A_0}
+  \label{eq:StressNew}
+\end{equation}
+
+\hspace{1em} This will eventually introduce larger value of stress by due to the fact that the area is reduced by the presence of the damage parameter. This damage parameter visualize not only for stress, but also for the effective stiffness as well. As an example, following figure
+shows the flow curve, which produced by the author in the 2nd assignment, highlighting the damage area. As it can be seen from the curve, the effective stiffness is gradually decreased as the damage accumulated in higher strain level.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        
+        %% --- PRIMARY AXIS: STRESS-STRAIN (Bottom & Left) ---
+        \begin{axis}[
+            scale only axis,
+            width=0.85\textwidth,
+            height=6cm,
+            xlabel={Strain},
+            ylabel={Stress in MPa},
+            axis y line*=left,
+            axis x line*=bottom,
+            xmin=-0.004, xmax=0.075,
+            ymin=-20, ymax=300,
+            grid=major,
+            xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
+            legend style={at={(0.65,0.65)}, anchor=north west}
+        ]
+            \addplot[color=black, line width=2pt] 
+                table{Visualization/resources/Case1.txt};
+
+            \fill[red, opacity=0.1] (axis cs:0.025, -20) rectangle (axis cs:0.075, 300);
+            
+            \draw[black, 
+                  line width=1pt] (axis cs:-0.004, 0) -- (axis cs:0.075, 0);
+
+            %% Triangle
+            \draw[black, 
+                  line width=1pt] (axis cs:0.0015, 50) -- (axis cs:0.0015, 250);
+            \draw[black, 
+                  line width=1pt] (axis cs:0.0005, 50) -- (axis cs:0.0015, 50);
+
+            \node[label={right:E}, inner sep=2.5pt] 
+            at (axis cs:0.001, 135) {};
+
+            %% Second Triangle
+            \draw[black, 
+                  line width=1pt] (axis cs:0.025, 50) -- (axis cs:0.025, 250);
+            \draw[black, 
+                  line width=1pt] (axis cs:0.024, 50) -- (axis cs:0.025, 50);
+
+            \node[label={right:E}, inner sep=2.5pt] 
+            at (axis cs:0.025, 135) {};
+
+            %% Third Triangle
+
+            \draw[black, 
+                  line width=1pt] (axis cs:0.035, 0) -- (axis cs:0.043, 100);
+
+            \draw[black, 
+                  line width=1pt] (axis cs:0.04, 25) -- (axis cs:0.04, 62);
+
+            \draw[black, 
+                  line width=1pt] (axis cs:0.037, 25) -- (axis cs:0.04, 25);
+
+            \node[label={right:(1-D)E}, inner sep=2.5pt] 
+            at (axis cs:0.04, 38) {};
+
+            \draw[black, 
+                  line width=1pt, 
+                  dash pattern=on 5pt off 2pt] (axis cs:0.0238, 0) -- (axis cs:0.025, 285.101);
+            
+            \node[label={right:Damage State}, circle, fill=black, inner sep=2.5pt] 
+            at (axis cs:0.043, 100) {};
+            
+  
+            
+
+            \addlegendentry{Stress-Strain}
+            
+    
+        \end{axis}
+
+        %% --- SECONDARY AXIS: DAMAGE (Top & Right) ---
+        \begin{axis}[
+            scale only axis,
+            width=0.85\textwidth,
+            height=6cm,
+            % --- ADD TITLE HERE ---
+            title={\textbf{Engineering Stress-Strain and Damage Evolution for Q1 Plate}},
+            title style={yshift=2.5em}, % Moves title up to avoid hitting top X-axis labels
+            % ----------------------
+            % --- Independent Scales ---
+            xmin=-0.04, xmax=0.75,           % Normalized Time or separate X-data
+            ymin=-2/30, ymax=1.05,           % Damage (0 to 1)
+            axis y line*=right,         % Y-axis on the right
+            axis x line*=top,           % X-axis on the top
+            xlabel={Time in s},
+            ylabel={Damage Variable (D)},
+            ylabel style={align=center},
+            ylabel style={black},
+            xlabel style={black},
+            xticklabel style={black},
+            yticklabel style={black},
+            legend style={at={(0.65,0.55)}, anchor=north west}
+        ]
+            \addplot[color=black, line width=1.5pt, dashed] 
+                table{Visualization/resources/Case1_Damage.txt};
+
+            
+            \addlegendentry{Damage Evolution}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Stiffness degradation, which the effective stiffness value $E_{eff} = (1-D)E$ in the fracture until failure region (red area).}
+    \label{fig:StiffnessDegrade}
+  \end{figure}
+
+\section{Comparison of the above methods}
+\hspace{1em}To distinguish the differences of the discussed three methods in describing fracture, following table summarized the difference for the described fracture models.
+
+
+\newpage
+\printbibliography
+
+\end{document}
+

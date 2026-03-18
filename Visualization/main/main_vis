@@ -1,0 +1,70 @@
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+class Visualization:
+    def __init__(self, filename):
+        # Define relative paths based on your structure
+        # Script is in \Visualization\main
+        self.__base_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        # Resource path: ..\resources\filename
+        self.__resource_path = os.path.join(self.__base_dir, "..", "resources", filename)
+        
+        # Image path: ..\..\images\
+        self.__image_folder = os.path.join(self.__base_dir, "..", "..", "images")
+        
+        self.__data = None
+        
+        # Ensure the image directory exists
+        if not os.path.exists(self.__image_folder):
+            os.makedirs(self.__image_folder)
+        
+    def read_file(self):
+        """Reads the file from the relative resources directory."""
+        try:
+            # Using tab separator as per Case1.txt structure
+            self.__data = pd.read_csv(self.__resource_path, sep='\t', header=None, names=["Strain", "Stress"])
+            print(f"Successfully read: {os.path.normpath(self.__resource_path)}")
+        except Exception as e:
+            print(f"Error reading file: {e}")
+    
+    def plot_result(self):
+        """Configures the plot style and generates the Stress-Strain curve."""
+        if self.__data is None:
+            print("Error: No data found. Please run read_file() first.")
+            return
+
+        # Configure Matplotlib settings
+        plt.rcParams["font.family"] = "serif"
+        plt.rcParams["font.serif"] = ["Times New Roman"]
+        plt.rcParams["mathtext.fontset"] = "stix" # Better matching for math symbols
+        
+        # Create the plot
+        plt.figure(figsize=(10, 6))
+        plt.plot(self.__data["Strain"], self.__data["Stress"], 
+                 label="Experimental Data", color='blue', linewidth=2)
+        
+        # Formatting
+        plt.xlabel(r"Strain ($\epsilon$)", fontsize=14)
+        plt.ylabel(r"Stress ($\sigma$) in MPa", fontsize=14)
+        plt.title("Stress-Strain Curve Analysis", fontsize=16, fontweight='bold')
+        plt.grid(True, linestyle='--', alpha=0.6)
+        plt.legend(loc='lower right', fontsize=12)
+        
+        # Layout and output
+        plt.tight_layout()
+        plt.savefig("Stress_Strain_Plot.pdf")
+        print("Plot has been saved as 'Stress_Strain_Plot.pdf'")
+        plt.show()
+        
+def main():
+    # You only need to provide the filename
+    my_vis = Visualization("Case1.txt")
+    
+    my_vis.read_file()
+    my_vis.plot_result()
+
+if __name__ == "__main__":
+    main()

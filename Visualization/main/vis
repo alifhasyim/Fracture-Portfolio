@@ -1,0 +1,52 @@
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 1. SETUP FONT (Times New Roman)
+plt.rcParams["font.family"] = "serif"
+plt.rcParams["font.serif"] = ["Times New Roman"]
+
+# 2. DEFINE RELATIVE DIRECTORIES
+# Get the directory where this script is saved (\Visualization\main)
+base_path = os.path.dirname(os.path.abspath(__file__))
+
+# Path to resources: up one level, then into resources
+resource_dir = os.path.join(base_path, "..", "resources")
+
+# Path to images: up two levels, then into images
+image_dir = os.path.join(base_path, "..", "..", "images")
+
+# Create image folder if it doesn't exist
+if not os.path.exists(image_dir):
+    os.makedirs(image_dir)
+
+# 3. LOAD DATA
+# Loading Case1.txt (Assuming Tab Separated)
+file_path = os.path.join(resource_dir, "Case1.txt")
+df = pd.read_csv(file_path, sep='\t', header=None, names=["Strain", "Stress"])
+
+# 4. CREATE THE PLOT
+plt.figure(figsize=(8, 6), dpi=300)
+plt.plot(df["Strain"], df["Stress"], color='black', linewidth=1.5)
+
+# 5. CUSTOMIZE TICKS (Fixing the 0.07 limit issue)
+# To see 0.1 on the axis, the 'stop' value in np.arange must be greater than 0.1
+plt.xticks(np.arange(0, 0.11, 0.02)) 
+plt.yticks(np.arange(0, 301, 50))
+
+# Labels and Title
+plt.title("Stress-Strain Curve", fontsize=16)
+plt.xlabel("Strain [-]", fontsize=14)
+plt.ylabel("Stress [MPa]", fontsize=14)
+
+# Aesthetics
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.tight_layout()
+
+# 6. SAVE RESULT
+output_file = os.path.join(image_dir, "Stress_Strain_Plot.pdf")
+plt.savefig(output_file)
+print(f"Plot saved successfully at: {output_file}")
+
+plt.show()
