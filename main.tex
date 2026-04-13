@@ -1,44 +1,67 @@
 \documentclass[12pt]{article}
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{booktabs}
+% --- 1. Core Layout & Formatting ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{geometry}
 \geometry{margin=1in}
-\usepackage{float}
-\usepackage{longtable}
 \usepackage{setspace} 
 \usepackage{titlesec}
+\usepackage{bm}         % For bold math symbols (\boldsymbol)
+\usepackage{amsmath, amssymb} % Math essentials
+
+% --- 2. Graphics & Plotting ---
+\usepackage{graphicx}
 \usepackage{caption}
+\usepackage{float}
 \usepackage{tikz}
 \usepackage{pgfplots}
-\usepackage{float} % Required for the [H] figure placement
-\pgfplotsset{compat=1.18} % Set this to your installed version or 1.18
+\pgfplotsset{compat=1.18}
 
-\captionsetup[figure]{
-    format=hang,          % This creates the "tabbed" / hanging alignment
-    indention=0cm,        % Ensures no extra indentation
-    labelsep=quad,        % Adds a wide space (like a tab) after "Figure 1:"
-    labelfont=bf,         % Makes the label bold (optional, but professional)
-    skip=15pt             % Adds vertical space BETWEEN the caption and the paragraph below
-}
+% --- 3. Tables ---
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+
+% --- 4. TColorBox (The Boxed Text) ---
 \usepackage[most]{tcolorbox}
-\usepackage[style=numeric, sorting=none, backend=biber]{biblatex} 
-\addbibresource{bibliography_CIBB_file.bib}
 
-% --- ESSENTIAL ALIGNMENT FIXES ---
-\setlength{\parindent}{0pt}   % Makes text flush with the titles
-\setlength{\parskip}{1em}     % Adds a clean space between paragraphs
-% ---------------------------------
-
-\newtcbtheorem{Summary}{\bfseries Summary}{enhanced,drop shadow={black!50!white},
+% Define the "summarybox" environment
+\newtcolorbox{summarybox}[2][]{%
+  enhanced,
+  drop shadow={black!50!white},
   coltitle=black,
   top=0.3in,
-  attach boxed title to top left=
-  {xshift=1.5em,yshift=-\tcboxedtitleheight/2},
+  attach boxed title to top left={xshift=1.5em,yshift=-\tcboxedtitleheight/2},
+  boxed title style={size=small,colback=pink},
+  title={\bfseries #2}, 
+  #1
+}
+
+% Define the "Summary" theorem style (if you want numbered summaries)
+\newtcbtheorem{Summary}{Summary}{
+  enhanced,
+  drop shadow={black!50!white},
+  coltitle=black,
+  top=0.3in,
+  attach boxed title to top left={xshift=1.5em,yshift=-\tcboxedtitleheight/2},
   boxed title style={size=small,colback=pink}
-}{summary}
+}{sum}
+
+% --- 5. Bibliography ---
+\usepackage[style=numeric, sorting=none, backend=biber]{biblatex} 
+% Ensure this file exists in your folder!
+\addbibresource{bibliography_CIBB_file.bib}
+
+% --- 6. Document Settings ---
+\setlength{\parindent}{0pt}   
+\setlength{\parskip}{1em}     
+
+\captionsetup[figure]{
+    format=hang,
+    labelsep=quad,
+    labelfont=bf,
+    skip=15pt 
+}
 
 \title{Self-Evaluation Report \\ \large Computational Fracture Mechanics (WiSe26)}
 \author{Bagus Alifah Hasyim \\ 108023246468}
@@ -58,22 +81,15 @@ of the elastic strain energy of the material is equal to the increase in the sur
 surface energy and the elastic strain energy, further illustration is shown in figure~\ref{fig:Energy}.
 
 \hspace{1em} Consider an infinite plate with crack length of 2a that is subjected to a stress $\sigma$. 
-The change of elastic energy is defined as follows:
+The change of elastic energy $W_{el}$ and the surface energy $W_s$ are defined respectively as follows:
 
 \begin{equation}
-  W_{el} = -\frac{\pi \sigma^2 a^2}{E}
+  W_{el} = -\frac{\pi \sigma^2 a^2}{E}; \space \space W_{s} = 4a \gamma_s 
   \label{eq:ElasticEnergy}
 \end{equation}
 
 Where $a$ is the crack length and $E$ is the young modulus. Notice that the minus sign is stated due to the fact that these phenomena is a decrease of elastic energy.
-While the surface energy is described as following relation:
-
-\begin{equation}
-  W_{s} = 4a \gamma_s 
-  \label{eq:ElasticEnergy}
-\end{equation}
-
-Where $\gamma_s$ is the surface energy of the crack, which increase as the crack length increase as well. Hence, Griffith postulation mentioned that 
+$\gamma_s$ is the surface energy of the crack, which increase as the crack length increase as well. Hence, Griffith postulation mentioned that 
 a crack will extend if the potential energy decrease~\cite{Janssen.2002}. Potential energy is defined as the sum of the surface energy and the elastic energy, which is written as follows:
 
 \begin{equation}
@@ -81,7 +97,7 @@ a crack will extend if the potential energy decrease~\cite{Janssen.2002}. Potent
   \label{eq:TotalEnergy}
 \end{equation}
 
-Therefore, the postulation can be written mathematically as follows:
+Therefore, the Griffith postulation can be written mathematically as follows:
 
 \begin{equation}
   F_{crack} = -\frac{dU}{da} > 0
@@ -136,11 +152,136 @@ using LEFM approach.
 
 \section{Elastic-Plastic Fracture Mechanics}
 
-\hspace{1em} As discussed previously, linear elastic fracture mechanics have limitation on describing the fracture in the elastic region only.
+\hspace{1em} As discussed previously, linear elastic fracture mechanics have limitation on describing the fracture in the elastic region only. Beside known from the
+naming, LEFM is limited to describe the behavior only for either plane strain fracture in very high strength metallic material or for brittle material such as glass, 
+ceramics, rocks, and ice. Hence, elastic-plastic fracture mechanics (EPFM) is introduced to cover the area beyond the plastic region~\cite{Janssen.2002}.
+
+\hspace{1em} EPFM have coverages in materials that exhibit time-independent with non-linear behavior. This requires additional parameterization to describe such behavior: The first
+one is crack tip opening displacement (CTOD) and the J contour integral. Both of these parameters can describe the material in the elastic-plastic region and have the possibility for failure criterion utilization. Hence, 
+CTOD and J integrals give a nearly size-independent fracture toughness measurement~\cite{Anderson.1995}.
 
 \section{Failure hypotheses}
-\section{Crack resistance and R-curve behavior}
 
+\subsection*{Critical Stress Intensity Factor}
+\hspace{1em}As stated regarding the calculated stress in equation~\ref{eq:Stress}, K is mentioned as the stress intensity factor. K is basically a magnitude that gives elastic stress field.
+Based on the dimensional analysis, K should be linearly related to the stress and directly related to the square root of a
+characteristic length~\cite{Janssen.2002}. Hence, the equation is described as follows:
+
+\begin{equation}
+    K = \sigma \sqrt{\pi a} f(\frac{a}{w})
+    \label{eq:SIF}
+\end{equation}
+
+Where $a$ is the crack length, $\sigma$ is the applied stress, and $f(\frac{a}{w})$ is a dimensionless parameter that depends 
+on the specimen and crack. Based on the griffith energy balance approach on the crack initiation criterion, it is mentioned that crack is initiated in a certain condition, which written as follows:
+
+\begin{equation}
+    \sigma \sqrt{a} > \sqrt{\frac{2 E \gamma_e}{\pi}} 
+    \label{eq:Criterion}
+\end{equation}
+
+Where $E$ and $\gamma_e$ are the material properties. Hence, the crack will initiate if such condition in equation~\ref{eq:Criterion} is met. The fulfillment of such condition
+can be known as well as the critical stress intensity factor ($K_{IC}$), as this parameter describe the fracture toughness of the material or the material resistance against fracture~\cite{Zhu.2012}.   
+
+\subsection*{Critical Energy Release Rate}
+\hspace{1em} From Griffith theory, Irwin proposed a modification on the original crack extension criterion, where the equation is written as follows:
+
+\begin{equation}
+    \frac{\pi \sigma^2 a}{E} > 2 \gamma_e 
+    \label{eq:Griffith}
+\end{equation}
+
+Where the proposal was made on the left-hand side modification, which it is defined as the energy release rate $G$. This term represented
+the energy calculated per unit new crack area, available for infinitesimal crack extension~\cite{Janssen.2002}. While the right hand-side described the
+surface energy increase per unit new crack area that would occur as well in infinitesimal crack extension. Irwin's modification can be written
+as follows.
+
+\begin{equation}
+    G = \frac{\pi \sigma^2 a}{E} > G_c = 2 \gamma_e 
+    \label{eq:Irwin}
+\end{equation}
+
+Using both of the solution from Griffith and Irwin's modification, a simple relation can be established between factor K and the energy release rate.
+
+\begin{equation}
+    \frac{K}{E'} = G
+\end{equation}
+
+Where $E' = E$ represent for plane stress condition, and $E' = E(1-\nu)$ for plane strain condition with $E$ represent young's modulus and $\nu$ is the Poisson's ratio~\cite{Zhu.2012}.
+\subsection*{J-Integral}
+\hspace{1em} To map the fracture behavior based on the work done on a material per area of fracture, J integral offers a method to evaluate the toughness
+that exhibit non-linear behavior during loading~\cite{Hosford.2010}. It is proposed by Rice, as he formulated J integral to be a path independent line integral 
+that extend from the crack tip, which then the potential energy is calculated per increment of the line. Hence, the value is decrease as the line integral extend out of the
+crack tip~\cite{Janssen.2002}. Mathematically, J2 comes from the derivation of the second invariant of the deviatoric stress tensor, which defined as follows:
+
+\begin{equation}
+    J_2 = \frac{1}{2}(S_{ij}S_{ij})
+    \label{eq:J2}
+\end{equation}
+
+Where $S_{ij}$ is the deviatoric stress component. As defined previously, the J integral is basically sum of the work done in such
+path independent line integral. Here, it defines as following equation.
+
+\begin{equation}
+    J = \int_{}^{} W dy - T_{i}\frac{\partial u_i}{\partial x}s   
+    \label{eq:J2}
+\end{equation}
+
+In other literature, the derivation begins from limit approach~\cite{Janssen.2002}. It is said that the decrease of potential energy
+per increment of crack growth $-\frac{dU_p}{da}$, where the potential energy can be expressed as following terms.
+
+\begin{equation}
+    -\frac{dU_{\text{p}}}{da} = \lim_{\Delta a \to 0} -\frac{\Delta U_{\text{p}}}{\Delta a} = \lim_{\Delta a \to 0} \frac{1}{\Delta a} \left( \int_{\Gamma^*} T_i \Delta U_i \, ds - \int_{A^*} \Delta W \, dA \right).
+    \label{eq:PotentialEnergy}
+\end{equation}
+
+Equation~\ref{eq:PotentialEnergy} can be visualized using following figure, as the sum of the potential energy is calculated
+through the path perimeter $\varGamma$ with an area of $A$. Traction $T_i$ is subjected in the outer surface of the body $\varGamma*$,
+which also the total perimeter that can be calculated.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{images/Q3_JIntegral.pdf}
+    \caption{Elastic body with arbitrary area of A defined with a crack tip~\cite{Janssen.2002}}
+    \label{fig:JIntegral}
+\end{figure}
+
+\subsection*{Crack-Tip Opening Displacement}
+
+\hspace{1em}Crack tip opening displacement (CTOD) is originated from the crack opening displacement
+(COD) at the original crack tip, which is basically a study to measure the amount of plastic strain which
+the specimen subjected to a displacement~\cite{Janssen.2002}. CTOD was proposed in 1963 by Wells to serve as an engineering fracture parameter,
+equivalent to K or J in practical application~\cite{Zhu.2012}. Hence, the crack is study by measuring the crack blunt displacement near the crack tip after
+the specimen subjected to a surface traction in the specimen.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{images/Q3_CTOD.pdf}
+    \caption{Crack tip opening displacement (CTOD) deformation from sharp to blunt crack~\cite{Janssen.2002}.}
+    \label{fig:CTOD}
+\end{figure}
+
+\section{Crack resistance and R-curve behavior}
+\hspace{1em}As mentioned in equation~\ref{eq:Irwin} in Irwin's modification, crack growth will initiate if the energy is larger than the critical energy release rate. Here according to the lecture, the critical
+energy release rate is equal to the R-curve with function of crack length~\cite{Hartmaier.}. Hence, this study aim to examine the stability of the crack growth by comparing the crack resistance
+$R(a)$ with the energy release rate. The crack resistance is defined as the energy required per increment of crack extension~\cite{Janssen.2002}. Thus, combining the energy release rate and crack resistance concept produce
+following criterion of crack growth stability.
+
+\begin{equation}
+    \frac{\partial G}{\partial a}| _{F = const} \leq \frac{dR}{da} 
+    \label{eq:RCurve}
+\end{equation}
+
+\hspace{1em}This crack growth stability example is shown in figure~\ref{fig:RCurve}. It is observed that two different R-Curves has their own behavior according to its crack-length-R relation. Hence, R is equivalent to the
+applied force, which the value is growing exponentially as it tends to reach instability for larger R value. Hence, the critical G are present in both intersection point of the G- and R-Curve, where the derivative of both curves is equal.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.48\textwidth]{images/Q3_RCurve.pdf}
+    \caption{R-Curves and two example points of instability~\cite{Janssen.2002}.}
+    \label{fig:RCurve}
+\end{figure}
 
 
 \newpage
@@ -156,7 +297,7 @@ as the cohesive element material.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.65\textwidth]{images/Q5_CohesiveElement.pdf}
+    \includegraphics[width=0.6\textwidth]{images/Q5_CohesiveElement.pdf}
     \caption{Cohesive zone method mechanism with the zoomed in point of view on the traction criterion~\cite{Hartmaier.}}
     \label{fig:Cohesive}
 \end{figure}
@@ -175,7 +316,7 @@ separation is initiated, in other words.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.65\textwidth]{images/Q5_TractionSeparation.pdf}
+    \includegraphics[width=0.6\textwidth]{images/Q5_TractionSeparation.pdf}
     \caption{Traction-separation curve visualized in the two plates separation~\cite{Khoramishad.2010}.}
     \label{fig:TractionSeparation}
 \end{figure}
@@ -268,7 +409,7 @@ shows the flow curve, which produced by the author in the 2nd assignment, highli
         \begin{axis}[
             scale only axis,
             width=0.85\textwidth,
-            height=6cm,
+            height=5cm,
             xlabel={Strain},
             ylabel={Stress in MPa},
             axis y line*=left,
@@ -277,7 +418,7 @@ shows the flow curve, which produced by the author in the 2nd assignment, highli
             ymin=-20, ymax=300,
             grid=major,
             xticklabel style={/pgf/number format/fixed, /pgf/number format/precision=2},
-            legend style={at={(0.65,0.65)}, anchor=north west}
+            legend style={at={(0.65,0.7)}, anchor=north west}
         ]
             \addplot[color=black, line width=2pt] 
                 table{Visualization/resources/Case1.txt};
@@ -338,10 +479,10 @@ shows the flow curve, which produced by the author in the 2nd assignment, highli
         \begin{axis}[
             scale only axis,
             width=0.85\textwidth,
-            height=6cm,
+            height=5cm,
             % --- ADD TITLE HERE ---
-            title={\textbf{Engineering Stress-Strain and Damage Evolution for Q1 Plate}},
-            title style={yshift=2.5em}, % Moves title up to avoid hitting top X-axis labels
+            %title={\textbf{Engineering Stress-Strain and Damage Evolution for Q1 Plate}},
+            %title style={yshift=2.5em}, % Moves title up to avoid hitting top X-axis labels
             % ----------------------
             % --- Independent Scales ---
             xmin=-0.04, xmax=0.75,           % Normalized Time or separate X-data
@@ -355,7 +496,7 @@ shows the flow curve, which produced by the author in the 2nd assignment, highli
             xlabel style={black},
             xticklabel style={black},
             yticklabel style={black},
-            legend style={at={(0.65,0.55)}, anchor=north west}
+            legend style={at={(0.65,0.6)}, anchor=north west}
         ]
             \addplot[color=black, line width=1.5pt, dashed] 
                 table{Visualization/resources/Case1_Damage.txt};
@@ -369,11 +510,288 @@ shows the flow curve, which produced by the author in the 2nd assignment, highli
   \end{figure}
 
 \section{Comparison of the above methods}
-\hspace{1em}To distinguish the differences of the discussed three methods in describing fracture, following table summarized the difference for the described fracture models.
+\hspace{1em}To distinguish the differences of the discussed three methods in describing fracture, following is the table summarized the difference for the described fracture models.
 
+\begin{table}[h!]
+    \centering
+    \caption{The difference for each fracture models.}
+    \label{tab:FractureDifferences}
+    \begin{tabularx}{\textwidth}{l *{7}{>{\centering\arraybackslash}X}}
+        \toprule
+        Fracture Models / Aspect & Cohesive Zone & XFEM & Damage mechanics \\
+        \midrule
+        Computational Cost & Moderate (additional criterion between nodes) & Highest (Due to additional DoF) & Lowest (No further DoF addition, only defining the damage criterion) \\
+        Predictive Capability & Crack only defines in the designated nodes connection & Crack propagates only in the enriched elements & Damage can occur at any area, as long as the criterion fulfilled \\
+        Disadvantage & Crack cannot propagate to other elements due to limitation & Prone to instability due to singularity if the crack propagate to the nodes & Cannot visualize the crack specifically, rather only the damage area  \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
 
 \newpage
 \printbibliography
+
+\newpage
+\section*{Appendix: Large-Language Models (LLMs) use in this report based on GPT@RUB}
+
+
+%% ---------------------------------------- %%
+
+\begin{summarybox}{Prompt 1: Outline summary on the evaluation report}
+\textbf{Prompt:} You are an expert in fracture mechanics. Can you help me creating a report on following topic summary for my 15 pages report? Here is the topic that I need to write.
+\begin{itemize}
+    \item Linear Elastic Fracture Mechanics (LFEM)
+    \item Elastic-Plastic Fracture Mechanics
+    \item Failure hypotheses (critical stress intensity factor, critical energy release rate, J-integral, crack-tip opening displacement)
+    \item Crack resistance and R-curve behavior
+    \item Cohesive Zone Models
+    \item eXtended Finite Element Method (XFEM)
+    \item Damage mechanics
+    \item Comparison of the above methods
+\end{itemize}
+
+Please make the important outlines, which I need to discuss in my report.
+\vspace{1em}
+
+\textbf{Response:}
+
+Certainly! Here’s a detailed outline for your 15-page report on the given fracture mechanics topics. This structure ensures logical flow, covers all requested points, and provides subtopics you can expand upon in each section.
+\vspace{1em}
+
+\textbf{Title:}
+
+Advanced Topics in Fracture Mechanics: From Linear Elasticity to Damage Modeling
+\vspace{1em}
+\textbf{Abstract:}
+
+\begin{itemize}
+    \item Brief summary of the report’s scope, objectives, and key findings.
+\end{itemize}
+
+
+\textbf{Table of Contents:}
+
+\begin{itemize}
+    \item List all main sections and subsections.
+\end{itemize}
+\end{summarybox}
+
+
+\newpage
+\begin{summarybox}{Prompt 1: Outline summary on the evaluation report}
+    
+\section*{1. Introduction }
+\begin{itemize}
+    \item Importance of fracture mechanics in engineering
+    \item Historical development and motivation
+    \item Overview of report structure
+\end{itemize}
+\section*{2. Linear Elastic Fracture Mechanics (LEFM)}
+\begin{itemize}
+    \item Fundamental assumptions (linearity, small-scale yielding)
+    \item Stress intensity factor (SIF): Modes I, II, III
+    \item Griffith’s criterion and energy balance
+    \item Irwin’s modification and practical implications
+    \item Applications and limitations
+\end{itemize}
+
+\section*{3. Elastic-Plastic Fracture Mechanics (EPFM) }
+\begin{itemize}
+    \item Need for EPFM: limitations of LEFM
+    \item Concepts of plastic zone and crack tip blunting
+    \item Key parameters: J-integral, Crack Tip Opening Displacement (CTOD)
+    \item Experimental methods for EPFM
+    \item Applications and limitations
+\end{itemize}
+\section*{4. Failure Hypotheses in Fracture Mechanics }
+\begin{itemize}
+    \item Critical Stress Intensity Factor ($K_{IC}$)
+    \begin{itemize}
+        \item Definition and measurement
+        \item Material toughness
+    \end{itemize}
+    \item Critical Energy Release Rate ($G_{IC}$)
+    \begin{itemize}
+        \item Relationship with $K_{IC}$
+        \item Energy-based failure criteria
+    \end{itemize}
+\end{itemize}
+\end{summarybox}
+
+\newpage
+\begin{summarybox}{Prompt 1: Outline summary on the evaluation report}
+
+\begin{itemize}
+    \item $J$-integral
+    \begin{itemize}
+        \item Path independence
+        \item Physical meaning and calculation
+    \end{itemize}
+    \item Crack Tip Opening Displacement (CTOD)
+    \begin{itemize}
+        \item Measurement and significance
+        \item Relation to ductile fracture
+    \end{itemize}
+\end{itemize}
+\section*{5. Crack Resistance and R-Curve Behavior }
+\begin{itemize}
+    \item Definition of R-curve
+    \item Mechanisms of crack resistance (e.g., toughening, bridging)
+    \item Measurement and interpretation of R-curves
+    \item Importance in material selection and design
+\end{itemize}
+\section*{6. Cohesive Zone Models (CZM) }
+\begin{itemize}
+    \item Concept and historical development
+    \item Traction-separation laws
+    \item Implementation in numerical simulations
+    \item Advantages and limitations
+    \item Applications (e.g., interface fracture, ductile tearing)
+\end{itemize}
+\section*{7. eXtended Finite Element Method (XFEM) }
+\begin{itemize}
+    \item Motivation for XFEM (limitations of traditional FEM)
+    \item Basic principles (enrichment functions, crack representation)
+    \item Implementation steps
+    \item Applications in fracture analysis
+    \item Advantages and challenges
+\end{itemize}
+\end{summarybox}
+
+\begin{summarybox}{Prompt 1: Outline summary on the evaluation report}
+\section*{8. Damage Mechanics }
+\begin{itemize}
+    \item Introduction to continuum damage mechanics (CDM)
+    \item Damage variables and evolution laws
+    \item Coupling with fracture mechanics
+    \item Applications in predicting failure and life assessment
+\end{itemize}
+
+\section*{9. Comparison of Fracture Mechanics Methods }
+\begin{itemize}
+    \item Summary table of methods (LEFM, EPFM, CZM, XFEM, Damage Mechanics)
+    \item Criteria for comparison:
+    \begin{itemize}
+        \item Applicability (material, loading, geometry)
+        \item Accuracy and computational cost
+        \item Experimental requirements
+        \item Predictive capabilities
+    \end{itemize}
+    \item Discussion of strengths and weaknesses
+    \item Guidelines for method selection
+\end{itemize}
+\vspace{1em}
+\textbf{Tips for writing:}
+\vspace{1em}
+\begin{itemize}
+    \item Use diagrams and figures to illustrate concepts (e.g., SIF, R-curve, CZM).
+    \item Include equations where relevant (e.g., Griffith’s criterion, J-integral).
+    \item Provide real-world examples or case studies for each method.
+    \item Summarize each section with key points.
+\end{itemize}
+\end{summarybox}
+
+\newpage
+\begin{summarybox}{Prompt 2: XFEM singularity}
+\textbf{Prompt:} Why does the XFEM will lead to singularity if the crack reach the nodes?
+\vspace{1em}
+
+\textbf{Response:}
+
+Great question! Here’s a clear explanation:
+
+Why does XFEM lead to singularity if the crack reaches the nodes?
+XFEM (eXtended Finite Element Method) enriches the standard finite element approximation to model cracks without remeshing. It does this by adding special functions to the displacement field:
+
+\begin{itemize}
+    \item \textbf{Heaviside function:} to represent displacement jumps across the crack surface.
+    \item \textbf{Crack tip enrichment functions:} to capture the singular stress field near the crack tip.
+\end{itemize}
+
+\textbf{What happens when the crack reaches a node?}
+
+\begin{itemize}
+    \item In XFEM, enrichment functions are applied to nodes whose support is cut by the crack or near the crack tip.
+    \item The crack tip enrichment functions are designed to reproduce the singularity in the stress and displacement fields as predicted by LEFM (e.g., $r^{\frac{1}{2}}$
+  behavior near the tip).
+\end{itemize}
+
+\textbf{If the crack tip coincides exactly with a node:}
+\begin{itemize}
+    \item The enrichment function becomes singular at that node (e.g., r=0), leading to infinite values in the displacement or stress field.
+    \item This is a mathematical singularity, not a physical one, and it causes numerical instability or ill-conditioning in the system of equations.
+\end{itemize}
+
+\textbf{Why is this a problem?}
+\begin{itemize}
+    \item The finite element method relies on evaluating shape functions and their derivatives at nodes.
+    \item If the enrichment function is singular at a node, the stiffness matrix entries can become infinite or undefined.
+    \item This leads to poor convergence, inaccurate results, or even failure of the solver.
+\end{itemize}
+
+\end{summarybox}
+\begin{summarybox}{Prompt 2: XFEM singularity}
+\textbf{How is this avoided?}
+\begin{itemize}
+    \item In practice, XFEM implementations ensure that the crack tip does not coincide exactly with a node.
+    \item The crack tip is usually placed within an element, not at a node, so the singularity is only approached, not reached.
+    \item If the crack tip moves and reaches a node, remeshing or special treatment is required to avoid the singularity.
+\end{itemize}
+
+\textbf{Conclusion}
+
+\textbf{XFEM leads to singularity if the crack tip reaches a node because the enrichment functions (especially those modeling the crack tip singularity) become infinite at that point, causing numerical instability.}
+To avoid this, cracks are kept within elements, not at nodes, in XFEM simulations.
+
+\vspace{1em}
+If you need a more technical explanation or references, let me know!
+
+\end{summarybox}
+
+\begin{summarybox}{Prompt 3: C-Level Displacement}
+\textbf{Prompt:} What C level should displacement have in bare minimum in order to not introduce displacement jump?
+\vspace{1em}
+
+\textbf{Response:}
+In fracture mechanics, \textbf{the regularity (smoothness) of the displacement field} is crucial, especially when modeling cracks. The “C level” refers to the continuity class of a function:
+
+\begin{itemize}
+    \item $C^0$: The function is continuous, but its derivatives may not be.
+    \item $C^1$: The function and its first derivative are continuous.
+    \item $C^2$: The function and its first and second derivatives are continuous.
+    \item And so on
+\end{itemize}
+
+Displacement Jump and Continuity
+
+A \textbf{displacement jump} occurs when the displacement field is discontinuous 
+across a surface (such as a crack). To \textbf{avoid a displacement jump}, the 
+displacement field must be at least \textbf{continuous} across the domain, including the crack surface.
+
+\vspace{1em}
+\textbf{Bare Minimum Requirement}
+\begin{itemize}
+    \item Displacement field must be  continuous (i.e., no jump in displacement).
+    \item If the displacement field is less than  (i.e., discontinuous), a displacement jump will be present.
+\end{itemize}
+
+\textbf{In Practice}
+\begin{itemize}
+    \item In standard finite element methods (FEM), shape functions are usually $C^0$ continuous, ensuring no displacement jump between elements.
+    \item In methods like XFEM (eXtended Finite Element Method), special enrichment functions are used to allow for displacement jumps across cracks, which is necessary for modeling crack opening.
+\end{itemize}
+
+\textbf{Conclusion:}
+
+\vspace{1em}
+
+\textbf{The bare minimum C level to avoid introducing a displacement jump is} $C^0$ \textbf{(continuous displacement field)}.
+
+If you want to model cracks with opening (displacement jump), you intentionally use less than $C^0$
+  continuity (e.g., in XFEM or cohesive zone models). For standard, uncracked domains, $C^0$
+  is required to avoid jumps.
+
+\end{summarybox}
+
 
 \end{document}
 

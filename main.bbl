@@ -135,6 +135,106 @@
       \verb 1-s2.0-S0013795202000339-main:Attachments/1-s2.0-S0013795202000339-main.pdf:application/pdf
       \endverb
     \endentry
+    \entry{Anderson.1995}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=58bcc62de2800dfa11db05ab20f3aac6}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={T.L},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {CRC Press}%
+      }
+      \strng{namehash}{58bcc62de2800dfa11db05ab20f3aac6}
+      \strng{fullhash}{58bcc62de2800dfa11db05ab20f3aac6}
+      \strng{fullhashraw}{58bcc62de2800dfa11db05ab20f3aac6}
+      \strng{bibnamehash}{58bcc62de2800dfa11db05ab20f3aac6}
+      \strng{authorbibnamehash}{58bcc62de2800dfa11db05ab20f3aac6}
+      \strng{authornamehash}{58bcc62de2800dfa11db05ab20f3aac6}
+      \strng{authorfullhash}{58bcc62de2800dfa11db05ab20f3aac6}
+      \strng{authorfullhashraw}{58bcc62de2800dfa11db05ab20f3aac6}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0-8493-4260-0}
+      \field{title}{Fracture Mechanics: Fundamentals and Application: Second Edition}
+      \field{year}{1995}
+      \verb{file}
+      \verb Parte I Anderson T.L. Fracture mechanics - Fundamentals and applications:Attachments/Parte I Anderson T.L. Fracture mechanics - Fundamentals and applications.pdf:application/pdf
+      \endverb
+    \endentry
+    \entry{Zhu.2012}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=61bd7fa3a88109f5987cf652d0696155}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Xian-Kui},
+           giveni={X\bibinithyphendelim K\bibinitperiod}}}%
+        {{hash=fa06a8231d2705c906e96f63a7aa20e4}{%
+           family={Joyce},
+           familyi={J\bibinitperiod},
+           given={James\bibnamedelima A.},
+           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{9d5a16c97c681a422303a53289b608b3}
+      \strng{fullhash}{9d5a16c97c681a422303a53289b608b3}
+      \strng{fullhashraw}{9d5a16c97c681a422303a53289b608b3}
+      \strng{bibnamehash}{9d5a16c97c681a422303a53289b608b3}
+      \strng{authorbibnamehash}{9d5a16c97c681a422303a53289b608b3}
+      \strng{authornamehash}{9d5a16c97c681a422303a53289b608b3}
+      \strng{authorfullhash}{9d5a16c97c681a422303a53289b608b3}
+      \strng{authorfullhashraw}{9d5a16c97c681a422303a53289b608b3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{00137944}
+      \field{journaltitle}{Engineering Fracture Mechanics}
+      \field{title}{Review of fracture toughness (G, K, J, CTOD, CTOA) testing and standardization}
+      \field{volume}{85}
+      \field{year}{2012}
+      \field{pages}{1\bibrangedash 46}
+      \range{pages}{46}
+      \verb{doi}
+      \verb \url{10.1016/j.engfracmech.2012.02.001}
+      \endverb
+      \verb{file}
+      \verb 1-s2.0-S001379441200063X-main:Attachments/1-s2.0-S001379441200063X-main.pdf:application/pdf
+      \endverb
+      \keyw{ASTM standard;CTOA;CTOD;Energy release rate;Fracture test;Fracture toughness;J-integral;J--R curve;KR curve;Stress intensity factor}
+    \endentry
+    \entry{Hosford.2010}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=09e5c4776f25dd3f09dcdb439f22c819}{%
+           family={Hosford},
+           familyi={H\bibinitperiod},
+           given={William\bibnamedelima F.},
+           giveni={W\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{09e5c4776f25dd3f09dcdb439f22c819}
+      \strng{fullhash}{09e5c4776f25dd3f09dcdb439f22c819}
+      \strng{fullhashraw}{09e5c4776f25dd3f09dcdb439f22c819}
+      \strng{bibnamehash}{09e5c4776f25dd3f09dcdb439f22c819}
+      \strng{authorbibnamehash}{09e5c4776f25dd3f09dcdb439f22c819}
+      \strng{authornamehash}{09e5c4776f25dd3f09dcdb439f22c819}
+      \strng{authorfullhash}{09e5c4776f25dd3f09dcdb439f22c819}
+      \strng{authorfullhashraw}{09e5c4776f25dd3f09dcdb439f22c819}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-511-65836-5}
+      \field{title}{Mechanical Behavior of Materials}
+      \field{year}{2010}
+      \verb{file}
+      \verb HosfordWilliamF{\_}2005{\_}14FractureMechanics:Attachments/HosfordWilliamF{\_}2005{\_}14FractureMechanics.pdf:application/pdf
+      \endverb
+    \endentry
     \entry{Hartmaier.}{unpublished}{}{}
       \name{author}{1}{}{%
         {{hash=99c7fb89af7f5fb02bcdac551bcf77dc}{%
@@ -151,11 +251,11 @@
       \strng{authornamehash}{99c7fb89af7f5fb02bcdac551bcf77dc}
       \strng{authorfullhash}{99c7fb89af7f5fb02bcdac551bcf77dc}
       \strng{authorfullhashraw}{99c7fb89af7f5fb02bcdac551bcf77dc}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{CompFracMec-Part{\_}III.pdf}
+      \field{title}{CompFracMec-Part{\_}I - III.pdf}
       \field{year}{2026}
       \verb{file}
       \verb CompFracMec-Part{\_}III:Attachments/CompFracMec-Part{\_}III.pdf:application/pdf
@@ -192,8 +292,8 @@
       \strng{authornamehash}{e182016698ab0a5af70437df99a9b73c}
       \strng{authorfullhash}{9c865dea194ac8b7d95b7f4b6fe6d7dc}
       \strng{authorfullhashraw}{9c865dea194ac8b7d95b7f4b6fe6d7dc}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{01421123}
@@ -237,8 +337,8 @@
       \strng{authornamehash}{655c873f777bbd4d1d33941ae298acb3}
       \strng{authorfullhash}{655c873f777bbd4d1d33941ae298acb3}
       \strng{authorfullhashraw}{655c873f777bbd4d1d33941ae298acb3}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Engineering Sciences [physics]/Mechanics [physics.med-ph]/Structural mechanics [physics.class-ph]}
